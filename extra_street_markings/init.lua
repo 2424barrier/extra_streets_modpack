@@ -87,5 +87,3 @@ for _, tex in pairs(core.get_dir_list(core.get_modpath("extra_street_markings") 
 	end
 	extra_street_markings.register_label(name, desc, tex)
 end
-
-dofile(core.get_modpath("extra_street_markings") .. "/aliases.lua")
