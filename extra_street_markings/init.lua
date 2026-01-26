@@ -52,6 +52,24 @@ function extra_street_markings.register_label(name, desc, texture)
 		sounds = default.node_sound_stone_defaults(),
 	})
 
+	if name:find("side") then
+		core.register_node("extra_street_markings:mark_" .. name .. "_on_asphalt_rotated", {
+			description = "Asphalt With Marking: " .. desc .. " Rotated",
+			groups = { cracky = 3 },
+			is_ground_content = false,
+			tiles = {
+				"streets_asphalt.png^" .. texture .. "^[transformR180",
+				"streets_asphalt.png",
+				"streets_asphalt.png",
+				"streets_asphalt.png",
+				"streets_asphalt.png^" .. texture,
+				"streets_asphalt.png^" .. texture .. "^[transformR180",
+			},
+			paramtype2 = "facedir",
+			sounds = default.node_sound_stone_defaults(),
+		})
+	end
+
 	core.register_craft({
 		output = "extra_street_markings:mark_" .. name .. "_on_asphalt",
 		type = "shapeless",
@@ -72,6 +90,26 @@ function extra_street_markings.register_label(name, desc, texture)
 			groups = { cracky = 3 },
 			sounds = default.node_sound_stone_defaults(),
 		})
+		if name:find("side") then
+			stairsplus:register_all(
+				"extra_street_markings",
+				name .. "_rotated",
+				"extra_street_markings:mark_" .. name .. "_on_asphalt_rotated",
+				{
+					description = "Asphalt with Marking: " .. desc .. " Rotated",
+					tiles = {
+						"streets_asphalt.png^" .. texture .. "^[transformR180",
+						"streets_asphalt.png",
+						"streets_asphalt.png",
+						"streets_asphalt.png",
+						"streets_asphalt.png^" .. texture,
+						"streets_asphalt.png^" .. texture .. "^[transformR180",
+					},
+					groups = { cracky = 3 },
+					sounds = default.node_sound_stone_defaults(),
+				}
+			)
+		end
 	end
 end
 
