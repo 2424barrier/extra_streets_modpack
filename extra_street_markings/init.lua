@@ -20,7 +20,7 @@ function extra_street_markings.register_label(name, desc, texture)
 			local lower_pos = { x = pos.x, y = pos.y - 1, z = pos.z }
 			local lower_node = core.get_node(lower_pos)
 			if lower_node.name == "streets:asphalt" then
-				lower_node.name = "extra_street_markings:mark_" .. (node.name:sub(14)) .. "_on_asphalt"
+				lower_node.name = "extra_street_markings:mark_" .. (name) .. "_on_asphalt"
 				lower_node.param2 = node.param2
 				core.set_node(lower_pos, lower_node)
 				core.remove_node(pos)
